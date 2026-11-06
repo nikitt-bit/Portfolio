@@ -12,7 +12,7 @@
       --bg: #e6e5d8;
       --black: #000000;
       --border: 2px solid #000000;
-      --header-h: 58px;
+      --header-h: 64px;
     }
 
     * {
@@ -38,7 +38,7 @@
       text-decoration: none;
     }
 
-    /* Header */
+    /* Header — увеличены надписи и отступы */
     header {
       position: sticky;
       top: 0;
@@ -47,63 +47,64 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 32px;
+      padding: 0 clamp(24px, 3vw, 48px);
       height: var(--header-h);
-      font-size: clamp(13px, 1vw, 16px);
+      font-size: clamp(16px, 1.2vw, 20px);
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       border-bottom: var(--border);
     }
 
     nav {
       display: flex;
-      gap: 28px;
+      gap: clamp(24px, 2.5vw, 40px);
     }
 
     nav a:hover {
       text-decoration: underline;
     }
 
-    /* Hero Section — подогнан ровно под экран 1080p и масштабируется */
+    /* Hero Section — подогнан под пропорции 1920x1080 */
     .hero {
       min-height: calc(100vh - var(--header-h));
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(32px, 5vh, 70px) clamp(20px, 3vw, 48px);
+      justify-content: flex-start;
+      padding: clamp(30px, 4vh, 60px) clamp(24px, 3vw, 48px) 60px;
       box-sizing: border-box;
     }
 
-    .hero-title-wrap {
+    /* SVG заголовок растягивается точно от края до края контейнера */
+    .hero-title-svg {
       width: 100%;
+      height: auto;
+      display: block;
+      overflow: visible;
     }
 
-    /* Растягивает VISUAL SOLUTIONS на максимум ширины */
-    .hero h1 {
-      font-size: clamp(40px, 9.8vw, 185px);
+    .hero-title-svg text {
+      font-family: 'Inter', sans-serif;
       font-weight: 900;
-      letter-spacing: -0.04em;
-      line-height: 0.9;
-      text-transform: uppercase;
-      word-break: break-word;
-      margin-bottom: 20px;
+      font-size: 142px;
+      fill: var(--black);
+      letter-spacing: -3px;
     }
 
+    /* Текст поднят прямо к заголовку */
     .hero p {
-      font-size: clamp(18px, 2.2vw, 40px);
-      max-width: 1300px;
+      margin-top: clamp(20px, 3vh, 40px);
+      font-size: clamp(20px, 2.2vw, 38px);
+      max-width: 1350px;
       font-weight: 400;
-      line-height: 1.25;
+      line-height: 1.28;
       letter-spacing: -0.01em;
-      margin-top: auto;
-      padding-bottom: 20px;
     }
 
     /* Section Headers */
     .section-bar {
       background: var(--black);
       color: var(--bg);
-      padding: 16px clamp(20px, 3vw, 48px);
+      padding: 16px clamp(24px, 3vw, 48px);
       font-size: clamp(20px, 1.8vw, 34px);
       font-weight: 800;
       letter-spacing: 0.02em;
@@ -122,7 +123,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: clamp(22px, 2vw, 36px);
+      font-size: clamp(24px, 2vw, 38px);
       font-weight: 600;
       position: relative;
       cursor: pointer;
@@ -152,7 +153,7 @@
 
     /* Info Section */
     .info-content {
-      padding: clamp(40px, 6vw, 100px) clamp(20px, 3vw, 48px);
+      padding: clamp(40px, 6vw, 100px) clamp(24px, 3vw, 48px);
       max-width: 1400px;
     }
 
@@ -167,7 +168,7 @@
     .contact-section {
       background: var(--black);
       color: #ffffff;
-      padding: 24px clamp(20px, 3vw, 48px) clamp(60px, 8vw, 120px);
+      padding: 24px clamp(24px, 3vw, 48px) clamp(60px, 8vw, 120px);
       border-top: var(--border);
     }
 
@@ -208,8 +209,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px clamp(20px, 3vw, 48px);
-      font-size: clamp(13px, 1vw, 16px);
+      padding: 22px clamp(24px, 3vw, 48px);
+      font-size: clamp(14px, 1.1vw, 18px);
       border-top: var(--border);
     }
 
@@ -220,13 +221,13 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.94);
+      background: rgba(0, 0, 0, 0.95);
       z-index: 1000;
       display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 24px;
     }
 
     .lightbox.active {
@@ -265,7 +266,7 @@
       margin-top: 24px;
       font-size: clamp(16px, 1.4vw, 24px);
       text-align: center;
-      max-width: 800px;
+      max-width: 900px;
       line-height: 1.4;
       font-weight: 400;
     }
@@ -275,7 +276,7 @@
       background: transparent;
       border: none;
       color: #ffffff;
-      font-size: 40px;
+      font-size: 44px;
       cursor: pointer;
       user-select: none;
       padding: 16px;
@@ -292,7 +293,7 @@
     .lightbox-close {
       top: 20px;
       right: 28px;
-      font-size: 44px;
+      font-size: 48px;
       line-height: 1;
     }
 
@@ -308,7 +309,6 @@
       transform: translateY(-50%);
     }
 
-    /* Мобильная адаптация для узких экранов */
     @media (max-width: 768px) {
       .works-grid {
         grid-template-columns: 1fr;
@@ -327,8 +327,6 @@
       }
       .hero {
         min-height: auto;
-        padding-top: 50px;
-        padding-bottom: 50px;
       }
     }
   </style>
@@ -345,155 +343,20 @@
   </header>
 
   <section class="hero">
-    <div class="hero-title-wrap">
-      <h1>VISUAL SOLUTIONS</h1>
-    </div>
+    <!-- SVG заголовок: занимает ровно 100% ширины на 1920px и любых других экранах -->
+    <svg class="hero-title-svg" viewBox="0 0 1675 145">
+      <text x="0" y="125">VISUAL SOLUTIONS</text>
+    </svg>
     <p>Graphic design, art direction & consulting.<br>
     Working on visual identities, print design, packaging, posters & art projects, etc.</p>
   </section>
 
   <div class="section-bar" id="works">01 / SELECTED WORKS</div>
   
-  <!-- Контейнер сетки, заполняется из массива JS -->
   <section class="works-grid" id="worksGrid"></section>
 
   <div class="section-bar" id="info">02 / INFO</div>
   <section class="info-content">
     <p>Hi! I’m Mikalai Tucha.<br>
     I’m a multidisciplinary graphic designer and visual artist.</p>
-    <p>Helping brands translate complex ideas into clear, memorable visual systems.</p>
-    <p>My work spans packaging, visual identities, print design, posters & art projects, etc.</p>
-    <p>I believe in a systematic approach, balancing structured design thinking with creative exploration.</p>
-  </section>
-
-  <section class="contact-section" id="contact">
-    <div class="section-bar">03 / CONTACT</div>
-    <div class="contact-title">
-      Questions?<br>
-      Get In Touch Any Way You Like
-    </div>
-    <div class="contact-links">
-      <a href="mailto:info@mikalaitucha.com">EMAIL ↗</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">INSTAGRAM ↗</a>
-      <a href="https://behance.net" target="_blank" rel="noopener">BEHANCE ↗</a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener">LINKEDIN ↗</a>
-      <a href="https://pinterest.com" target="_blank" rel="noopener">PINTEREST ↗</a>
-    </div>
-  </section>
-
-  <footer>
-    <div>2023–2027 ©</div>
-    <div><a href="mailto:info@mikalaitucha.com">info@mikalaitucha.com</a></div>
-  </footer>
-
-  <!-- Полноэкранный просмотрщик (Lightbox) -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-btn lightbox-close" id="lboxClose" aria-label="Close">&times;</button>
-    <button class="lightbox-btn lightbox-prev" id="lboxPrev" aria-label="Previous">&#10094;</button>
-    
-    <div class="lightbox-img-wrap" id="lboxMedia"></div>
-    <div class="lightbox-caption" id="lboxCaption"></div>
-
-    <button class="lightbox-btn lightbox-next" id="lboxNext" aria-label="Next">&#10095;</button>
-  </div>
-
-  <script>
-    /*
-      ===============================================================
-      МАССИВ РАБОТ ДЛЯ РЕДАКТИРОВАНИЯ:
-      - src: путь к файлу (например, "images/work1.jpg") или "" для плашки IMG
-      - desc: описание работы снизу во весь экран
-      ===============================================================
-    */
-    const worksData = [
-      {
-        src: "", // Вставьте сюда ссылку/путь на картинку, например: "img1.jpg"
-        title: "IMG 01",
-        desc: "Brand identity and packaging concept for specialty coffee brand, 2024."
-      },
-      {
-        src: "",
-        title: "IMG 02",
-        desc: "Exhibition visual identity and poster design for contemporary art festival."
-      },
-      {
-        src: "",
-        title: "IMG 03",
-        desc: "Editorial typography and art direction for independent magazine."
-      },
-      {
-        src: "",
-        title: "IMG 04",
-        desc: "Packaging system and structural design for organic cosmetics line."
-      }
-    ];
-
-    const grid = document.getElementById('worksGrid');
-    const lightbox = document.getElementById('lightbox');
-    const lboxMedia = document.getElementById('lboxMedia');
-    const lboxCaption = document.getElementById('lboxCaption');
-    const lboxClose = document.getElementById('lboxClose');
-    const lboxPrev = document.getElementById('lboxPrev');
-    const lboxNext = document.getElementById('lboxNext');
-
-    let currentIndex = 0;
-
-    // Генерация карточек в сетке
-    worksData.forEach((work, index) => {
-      const item = document.createElement('div');
-      item.className = 'work-item';
-      
-      if (work.src) {
-        const img = document.createElement('img');
-        img.src = work.src;
-        img.alt = work.title;
-        img.loading = 'lazy';
-        item.appendChild(img);
-      } else {
-        item.textContent = work.title;
-      }
-
-      item.addEventListener('click', () => openLightbox(index));
-      grid.appendChild(item);
-    });
-
-    function openLightbox(index) {
-      currentIndex = index;
-      updateLightboxContent();
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden'; // блокируем скролл фона
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    function updateLightboxContent() {
-      const item = worksData[currentIndex];
-      lboxMedia.innerHTML = '';
-
-      if (item.src) {
-        const img = document.createElement('img');
-        img.src = item.src;
-        img.alt = item.title;
-        lboxMedia.appendChild(img);
-      } else {
-        const dummy = document.createElement('div');
-        dummy.className = 'lightbox-placeholder';
-        dummy.textContent = item.title;
-        lboxMedia.appendChild(dummy);
-      }
-
-      lboxCaption.textContent = item.desc;
-    }
-
-    function nextItem(e) {
-      if (e) e.stopPropagation();
-      currentIndex = (currentIndex + 1) % worksData.length;
-      updateLightboxContent();
-    }
-
-    function prevItem(e) {
-      if (e) e.stopPropagation();
-      currentIndex = (currentIndex - 1
+    <p
